@@ -1,0 +1,28 @@
+
+
+
+
+
+package.json file contains information about the backend server such as 
+1. Details of dependencies installed
+2. Deployment Details.
+3. Other info etc
+index.js is the root file of your backend server 
+
+////////////////////NPM///////////////////////
+
+NPM contains millions of software which you can use for building your application. Its is like a library of software.
+1. express= for creating server
+2. moongose= for connecting database
+bcrypts.js= used for password encryption
+aws-sdk= used for connection Amazon web services
+multer= used for image/document upload
+jsonwebtoken= for user authourization and security
+helmet= used to protect you server from milicious attacks etc.
+sendrind= used for sending emails
+twilio= for sending OTP to your phonenumbers 
+
+///
+1. We can fetch data in only three forms 
+  1. array 2. nested object 3. Array of object.
+  
