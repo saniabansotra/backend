@@ -26,3 +26,11 @@ twilio= for sending OTP to your phonenumbers
 1. We can fetch data in only three forms 
   1. array 2. nested object 3. Array of object.
   
+
+
+  //////////////COOKIE(authourization basics)///////////////////////
+There are two types of APis 
+1. public API (which are freely accesible, i.e, No Login Required).
+2. private APIs (only accessible after login).
+
+ A private API works on the principle of cookies. Whenever user login to the server with correct credentials, server returns a token(ticket) Now this token is stored in the cookies of the browser thill the time user logs out. Now whenever a request to private api is mad, server checks whether the token is present in the browser or not. It the valid token is presentin the cookies, then private api runs successfully else it returns authourization error.

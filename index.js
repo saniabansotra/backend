@@ -1,10 +1,17 @@
-const express = require("express");
-const app = express();
-const PORT = 5000;
-app.get("/webies", (req, res) => {
-  return res.json({ status: true, message: "hello" });
-});
+//Synchronization
+const timeTakingFunction = async () => {
+  return "Hello World";
+};
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port $(PORT)`);
-});
+// console.log("After name consoled");
+
+const callingAsyncFunction = async () => {
+  const name = await timeTakingFunction(); //this will take time
+  console.log(name);
+};
+callingAsyncFunction();
+console.log("After Time Taking Function");
+
+//Async way
+//1. use the keyowrd async before the time taking function declaration (before fat)
+//2.
