@@ -6,5 +6,5 @@ const calendarSchema = new mongoose.Schema({
   date: Number, //08
   event: String, //Holi
 });
-const usermodel = mongoose.model("user", calendarSchema);
+const usermodel = mongoose.model("calender", calendarSchema);
 module.exports = usermodel;
