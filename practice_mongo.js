@@ -11,7 +11,9 @@ const connectDatabase = () => {
   }
 };
 const HOSTELER_MODEL = require("./models/hosteler");
+const TEACHER_MODEL = require("./models/teacher");
 const hosteler = require("./models/hosteler");
+const teacher = require("./models/teacher");
 app.use(express.json());
 
 app.post("/api/hostelerdata", async (req, res) => {
@@ -25,6 +27,22 @@ app.post("/api/hostelerdata", async (req, res) => {
     };
     const hosteler1 = new HOSTELER_MODEL(hostelers);
     await hosteler1.save();
+    return res.json({ success: true, message: "Data Saved successfully" });
+  } catch (error) {
+    return res.json({ success: false, error: error.message });
+  }
+});
+
+app.post("/api/teacher", async (req, res) => {
+  try {
+    const teachers = {
+      name: req.body.username,
+      subject: req.body.subject_name,
+      age: req.body.user_age,
+      number: req.body.phone_number,
+    };
+    const teacher1 = new TEACHER_MODEL(teachers);
+    await teacher1.save();
     return res.json({ success: true, message: "Data Saved successfully" });
   } catch (error) {
     return res.json({ success: false, error: error.message });
