@@ -33,6 +33,16 @@ app.post("/api/hostelerdata", async (req, res) => {
   }
 });
 
+app.get("/api/hostelerdata", async (req, res) => {
+  try {
+    const userdata = await HOSTELER_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ succcess: false, error: error.message });
+  }
+});
+
 app.post("/api/teacher", async (req, res) => {
   try {
     const teachers = {

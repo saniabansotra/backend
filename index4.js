@@ -1,6 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose"); // works as middleware b/w database and server
-const app = express(); //top most line of server
+const mongoose = require("mongoose");
+const app = express();
 const { connectDatabase } = require("./connection/cile");
 const USER_MODEL = require("./models/user");
 const PATIENT_MODEL = require("./models/patient");
@@ -21,13 +21,21 @@ app.post("/api/savedata", async (req, res) => {
     };
     const userData1 = new USER_MODEL(newobject1);
     await userData1.save();
-    // console.log(newobject)/;
+
     return res.json({ success: true, message: "Data Saved successfully" });
   } catch (error) {
     return res.json({ success: false, error: error.message });
   }
 });
 
+app.get("/api/savedata", async (req, res) => {
+  try {
+    const userdata = await USER_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 //////////////////////
 app.post("/api/productdata", async (req, res) => {
   try {
@@ -45,7 +53,14 @@ app.post("/api/productdata", async (req, res) => {
     return res.json({ success: false, error: error.message });
   }
 });
-
+app.get("/api/productdata", async (req, res) => {
+  try {
+    const userdata = await PRODUCT_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 ////////////////////////////////////////////////////
 
 app.post("/api/googledata", async (req, res) => {
@@ -65,16 +80,23 @@ app.post("/api/googledata", async (req, res) => {
     return res.json({ success: false, error: error.message });
   }
 });
-
+app.get("/api/googledata", async (req, res) => {
+  try {
+    const userdata = await GOOGLE_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 ////////////////////////////////////////////////////
 app.post("/api/calenderdata", async (req, res) => {
   try {
     const newobject4 = {
-      year: req.body.c_year, //2023
-      month: req.body.c_month, //March
-      day: req.body.c_day, //Monday
-      date: req.body.c_date, //08
-      event: req.body.c_event, //Holi
+      year: req.body.c_year,
+      month: req.body.c_month,
+      day: req.body.c_day,
+      date: req.body.c_date,
+      event: req.body.c_event,
     };
 
     const userData1 = new CALENDER_MODEL(newobject4);
@@ -84,7 +106,14 @@ app.post("/api/calenderdata", async (req, res) => {
     return res.json({ success: false, error: error.message });
   }
 });
-
+app.get("/api/calenderdata", async (req, res) => {
+  try {
+    const userdata = await CALENDER_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 ///////////////////////////////////////////////////////
 
 app.post("/api/patientdata", async (req, res) => {
@@ -106,6 +135,15 @@ app.post("/api/patientdata", async (req, res) => {
   }
 });
 
+app.get("/api/patientdata", async (req, res) => {
+  try {
+    const userdata = await PATIENT_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
 connectDatabase();
 const PORT = 8000;
 
@@ -113,51 +151,3 @@ app.listen(PORT, () => {
   // bottom most line
   console.log("Server is running on port ", PORT);
 });
-
-// const express = require("express");
-// const mongoose = require("mongoose"); // works as middleware b/w database and server
-// const app = express(); //top most line of server
-// const { connectDatabase } = require("./cile");
-
-// //main code
-// app.use(express.json());
-
-// app.post("/api/savedata", async (req, res) => {
-//   try {
-//     // console.log(req.body.username),
-//     //   console.log(req.body.userRollno),
-//     //   console.log(req.body.userBranch),
-//     //   console.log(req.body.userAge),
-//     //   console.log(req.body.freshers);
-
-//     const newobject = {
-//       name: req.body.name,
-//       rollNo: req.body.name,
-//       branch: req.body.branch,
-//       age: req.body.fresher,
-//       isFresher: req.body.isFresher,
-//     };
-//     const saveData = new USER_MODEL(newobject);
-//     await userData.save();
-//     // console.log(newobject);
-//     return res.json({ success: true, message: "Data Saved successfully" });
-//   } catch (error) {
-//     return res.json({ success: false, error: error.message });
-//   }
-// });
-
-// try {
-//   console.log(req.body);
-//   return res.json({ success: true, message: "data connected" });
-// } catch (error) {
-//   console.log(error);
-//   return res.json({ success: false, error: error.message });
-// }
-
-// connectDatabase();
-// const PORT = 8000;
-
-// app.listen(PORT, () => {
-//   // bottom most line
-//   console.log("Server is running on port ", PORT);
-// });
