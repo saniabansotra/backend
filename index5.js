@@ -24,7 +24,7 @@ const timeFunction = async () => {
 };
 
 const callingAsyncFunction = async () => {
-  const name = await timeFunction(); //this will take time
+  const name = await timeFunction(); 
   console.log(name);
 };
 callingAsyncFunction();

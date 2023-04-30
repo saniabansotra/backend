@@ -34,3 +34,55 @@ There are two types of APis
 2. private APIs (only accessible after login).
 
  A private API works on the principle of cookies. Whenever user login to the server with correct credentials, server returns a token(ticket) Now this token is stored in the cookies of the browser thill the time user logs out. Now whenever a request to private api is mad, server checks whether the token is present in the browser or not. It the valid token is presentin the cookies, then private api runs successfully else it returns authourization error.
+
+
+
+
+
+// const express = require("express");
+// const mongoose = require("mongoose"); // works as middleware b/w database and server
+// const app = express(); //top most line of server
+// const { connectDatabase } = require("./cile");
+
+// //main code
+// app.use(express.json());
+
+// app.post("/api/savedata", async (req, res) => {
+//   try {
+//     // console.log(req.body.username),
+//     //   console.log(req.body.userRollno),
+//     //   console.log(req.body.userBranch),
+//     //   console.log(req.body.userAge),
+//     //   console.log(req.body.freshers);
+
+//     const newobject = {
+//       name: req.body.name,
+//       rollNo: req.body.name,
+//       branch: req.body.branch,
+//       age: req.body.fresher,
+//       isFresher: req.body.isFresher,
+//     };
+//     const saveData = new USER_MODEL(newobject);
+//     await userData.save();
+//     // console.log(newobject);
+//     return res.json({ success: true, message: "Data Saved successfully" });
+//   } catch (error) {
+//     return res.json({ success: false, error: error.message });
+//   }
+// });
+
+// try {
+//   console.log(req.body);
+//   return res.json({ success: true, message: "data connected" });
+// } catch (error) {
+//   console.log(error);
+//   return res.json({ success: false, error: error.message });
+// }
+
+// connectDatabase();
+// const PORT = 8000;
+
+// app.listen(PORT, () => {
+//   // bottom most line
+//   console.log("Server is running on port ", PORT);
+// });

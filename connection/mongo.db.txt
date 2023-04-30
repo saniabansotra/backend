@@ -1,0 +1,5 @@
+As we know that in a mongodb collection, we store similar documents i.e object having same key value pair.
+ So  before storing any document in a collection, we need to describe those fields which are been used in that collection.
+ This process is called modelling.
+ For one collection, a one file is made in the server, inside models folder
+ Models folder contains all the models(for diff collection) which are to be used in db.
